@@ -19,7 +19,8 @@ $.ajax({
   data: {
     id 			: 65538,
     name 		: lamp.name,
-    state 	: lamp.state
+    state 	: lamp.state,
+    color   : lamp.color
   }
 });
 }
