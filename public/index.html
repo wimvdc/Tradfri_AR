@@ -1,55 +1,25 @@
 <html>
 	<script src="https://aframe.io/releases/0.6.1/aframe.js"></script>
 	<script src="js/aframe-ar.js"></script>
+	<script src="https://unpkg.com/aframe-text-component/dist/aframe-text-component.min.js"></script>
+	<script src="js/index.js"></script>
 	<body style='margin : 0px; overflow: hidden;'>
-		<script>
-		AFRAME.registerComponent('cursor-listener', {
-		  init: function () {
-		    this.el.addEventListener('click', function (evt) {
-		      console.log('I was clicked at: ', evt.detail.target.id);
-					let $parent = $("#"+evt.detail.target.id).parent();
-					let $color = $("#"+evt.detail.target.id);
-					let state = $color.data("state");;
-					restUpdate({
-						name: $parent.attr("id"),
-						state: state,
-						color: evt.detail.target.id
-					});
-		    });
-		  }
-		});
-
-	function restUpdate(lamp){
-		console.log(lamp);
-		$.ajax({
-		  type: "POST",
-		  url: '/api/ikea/update',
-		  data: {
-				id 			: 65538,
-				name 		: lamp.name,
-				state 	: lamp.state
-			}
-		});
-	}
-	</script>
-  <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: true;' >
+  <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;' >
     <a-marker type='pattern' url='patterns/w.patt' id="Keukentafel">
-			<a-text position="-0.5 0.1 -0.4" value="On" data-state="on" rotation="270 180 180" color="red" transparent="black"></a-text>
-	    <a-text position="-0.5 0.1 0.3" value="Off" data-state="on" rotation="270 180 180" color="red"></a-text>
-	     <a-box position="0 0.1 0" id="cool" data-state="off" cursor-listener width="0.2" height="0.1" rotation="0 0 0" color="#F5FAFA"></a-box>
-	     <a-box position="0.3 0.1 0" id="normal" data-state="on" cursor-listener width="0.2" height="0.1" rotation="0 0 0" color="#F8EAC9"></a-box>
-	     <a-box position="0.6 0.1 0" id="warm" data-state="on" cursor-listener width="0.2" height="0.1" rotation="0 0 0" color="#E7CB71"></a-box>
+			 <a-box position="-0.3 0.1 0" id="off" data-state="off" data-lamp-id="Keukentafel" cursor-listener width="0.2" height="0.05" rotation="0 0 0" color="#F03F35"></a-box>
+			 <a-box position="0 0.1 0" id="cool" data-state="on" data-lamp-id="Keukentafel" cursor-listener width="0.2" height="0.1" rotation="0 0 0" color="#F5FAFA"></a-box>
+	     <a-box position="0.3 0.1 0" id="normal" data-state="on" data-lamp-id="Keukentafel" cursor-listener width="0.2" height="0.1" rotation="0 0 0" color="#F8EAC9"></a-box>
+	     <a-box position="0.6 0.1 0" id="warm" data-state="on" data-lamp-id="Keukentafel" cursor-listener width="0.2" height="0.1" rotation="0 0 0" color="#E7CB71"></a-box>
     </a-marker>
-		<a-marker preset='hiro' id="light2">
-			<a-text position="-0.5 0.1 -0.4" value="Aan" data-state="on" rotation="270 180 180" color="red" transparent="black"></a-text>
-			<a-text position="-0.5 0.1 0.3" value="Uit"  data-state="off" rotation="270 180 180" color="red"></a-text>
-			<a-box position="0 0.1 0" id="cool" width="0.2" data-state="on" height="0.1" rotation="0 0 0" color="#F5FAFA"></a-box>
-			<a-box position="0.3 0.1 0" id="normal" width="0.2" data-state="on" height="0.1" rotation="0 0 0" color="#F8EAC9"></a-box>
-			<a-box position="0.6 0.1 0" id="warm" width="0.2" data-state="on" height="0.1" rotation="0 0 0" color="#E7CB71"></a-box>
+		<a-marker preset="hiro" id="Leeslamp">
+			<a-box position="-0.3 0.1 0" id="off" data-state="off" data-lamp-id="Leeslamp" cursor-listener width="0.2" height="0.05" rotation="0 0 0" color="#F03F35"></a-box>
+			<a-box position="0 0.1 0" id="cool" width="0.2" data-lamp-id="Leeslamp" cursor-listener data-state="on" height="0.1" rotation="0 0 0" color="#F5FAFA"></a-box>
+			<a-box position="0.3 0.1 0" id="normal" width="0.2" data-lamp-id="Leeslamp" cursor-listener data-state="on" height="0.1" rotation="0 0 0" color="#F8EAC9"></a-box>
+			<a-box position="0.6 0.1 0" id="warm" width="0.2" data-lamp-id="Leeslamp" cursor-listener data-state="on" height="0.1" rotation="0 0 0" color="#E7CB71"></a-box>
 		</a-marker>
     <!-- define a simple camera -->
     <a-entity camera>
-			<a-entity cursor="fuse: true; fuseTimeout: 500"
+			<a-entity cursor="fuse: true; fuseTimeout: 1250"
 					position="0 0 -1"
 					geometry="primitive: ring; radiusInner: 0.005; radiusOuter: 0.01"
 					material="color: black; shader: flat">

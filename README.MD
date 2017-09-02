@@ -6,11 +6,12 @@ It might not be very practical since controlling your lights with a physical swi
 ### Libraries used
 
   - AR.js - [GitHub](https://github.com/jeromeetienne/AR.js) -> this project includes a custom build which contains a fix for custom markers
+  - a-frame - [GitHub](https://aframe.io/docs/0.6.0/introduction/)
   - node-tradfri-argon - [NPM](https://www.npmjs.com/package/node-tradfri-argon)
 
-### Application architecture 
+### Application architecture
 
-It uses NodeJS to serve a static webpage. Using ExpressJS to expose a simple API to control the TRÅDFRI lights. 
+It uses NodeJS to serve a static webpage. Using ExpressJS to expose a simple API to control the TRÅDFRI lights.
 The node-tradfri-argon package relies on libcoap.
 
 ### Installation
@@ -31,4 +32,3 @@ The custom marker can switch my dining room light on (in 3 'colors').
 ### Todo
 - Make the "on" and "off" object clickable (to switch the light on/off)
 - Make the object clickable using touchscreen instead of the small black circle pointer
-
