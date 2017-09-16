@@ -30,5 +30,9 @@ It has 2 entities, each has its own marker (Hiro and custom marker).
 The custom marker can switch my dining room light on (in 3 'colors').
 
 ### Todo
-- Make the "on" and "off" object clickable (to switch the light on/off)
 - Make the object clickable using touchscreen instead of the small black circle pointer
+
+### Examples
+
+![Example light switch](https://github.com/wimvdc/Tradfri_AR/blob/master/example/example-light.gif)
+![Example AR](https://github.com/wimvdc/Tradfri_AR/blob/master/example/example-marker.gif)
